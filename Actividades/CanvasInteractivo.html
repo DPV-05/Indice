@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Key Codes</title>
+    <style>
+        body {
+            background-color: rgb(44, 167, 228);
+            text-align: center;
+        }
+
+        canvas {
+            background-color: white;
+        }
+    </style>
+  </head>
+  <body>
+      <canvas id="canvas" width="1000" height="500"></canvas>
+      <aside>Presiona uno de los numeros (1-5).</aside>
+      <aside>Usa las flechas para mover un cubo.</aside>
+
+      <script>
+          window.onload = function () {
+              var canvas = document.getElementById("canvas");
+              var context = canvas.getContext("2d");
+              var x = 200;
+              var y = 200;
+              context.font = '40pt Calibri Bold';
+              context.fillStyle = 'black';
+              context.fillText('Pagina interactiva con teclado', x, y);
+
+              var imagen0 = new Image();
+              imagen0.src = "/Images/pescao.gif";
+
+              var imagen1 = new Image();
+              imagen1.src = "/Images/one.png";
+
+              var imagen2 = new Image();
+              imagen2.src = "/Images/two.png";
+
+              var imagen3 = new Image();
+              imagen3.src = "/Images/three.jfif";
+
+              var imagen4 = new Image();
+              imagen4.src = "/Images/four.png";
+
+              var imagen5 = new Image();
+              imagen5.src = "/Images/five.png";
+
+              imagen0.onload = function () {
+              context.drawImage(imagen0, x, y + 50, 200, 200);
+              
+
+              };
+
+
+              function onKeyboardEvent(event) {
+                  switch (event.keyCode) {
+                      case 38:
+                          console.log("up!");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          y -= 5;
+                          context.fillRect(x, y, 100, 100);
+                          break;
+                      case 40:
+                          console.log("down!");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          y += 5;
+                          context.fillRect(x, y, 100, 100);
+                          break;
+                      case 37:
+                          console.log("left!");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          x -= 5;
+                          context.fillRect(x, y, 100, 100);
+                          break;
+                      case 38:
+                          console.log("right!");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          x += 5;
+
+                      case 49:
+                          console.log("Uno");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          context.drawImage(imagen1, x, y + 50, 200, 200)
+                          context.fillText('Uno', x, y)
+                          break;
+                      case 50:
+                          console.log("Dos");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          context.drawImage(imagen2, x, y + 50, 200, 200)
+                          context.fillText('Dos', x, y)
+                          break;
+                      case 51:
+                          console.log("Tres");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          context.drawImage(imagen3, x, y + 50, 200, 200)
+                          context.fillText('Tres', x, y)
+
+                          break;
+                      case 52:
+                          console.log("Cuatro");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          context.drawImage(imagen4, x, y + 50, 200, 200)
+                          context.fillText('Cuatro', x, y)
+                          break;
+                      case 53:
+                          console.log("Cinco");
+                          context.clearRect(0, 0, innerWidth, innerHeight);
+                          context.drawImage(imagen5, x, y + 50, 200, 200)
+                          context.fillText('Cinco', x, y)
+                          break;
+                      default:
+                          console.log(event.keyCode);
+                  }
+              }
+
+              window.addEventListener('keydown', onKeyboardEvent, false);
+          };
+      </script>
+  </body>
+</html>

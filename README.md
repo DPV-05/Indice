@@ -1,2 +1,1 @@
-# Indice
-Indice principal donde estan todas las atividades
+# Indice-de-actividades
