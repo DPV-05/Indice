@@ -3,13 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Rotacion con el mouse</title>
-     body {
-    background-color:rgb(189, 189, 189);
-  }
-    <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
-    <canvas id="canvas" width="800" height="800"></canvas>
+    <canvas id="canvas" width="1920" height="1080"></canvas>
     <aside>Move mouse on canvas element.</aside>
     
     <script src="../utils.js"></script>
@@ -18,6 +15,7 @@
     window.onload = function () {
       var canvas = document.getElementById('canvas'),
           context = canvas.getContext('2d'),
+        context.fillstyle (189, 189, 189);
           mouse = utils.captureMouse(canvas),
           arrow = new Arrow();
         
