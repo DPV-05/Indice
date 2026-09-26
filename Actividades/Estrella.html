@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reto Estrella</title>
+     <style>
+      canvas{
+          border: 3px solid brown;
+          background-color: purple;
+      }
+      
+  </style>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <div style="text-align: center;">
+    <canvas id="canvas" width="800" height="500" style="border:3px solid #000000;">></canvas>
+    </div>
+
+    
+    <script src="../utils.js"></script>
+    <script src="./classes/star.js"></script>
+
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d');
+          var str= new Star();
+          var fondo = new Image();
+
+        fondo.src = "Images/espacio.jpg";
+        
+          var angle = 0,
+          centerY = 400,
+          range = 60,
+       xspeed = 1,
+       yspeed = 0.1;
+        
+      str.x = 1;
+      x=str.x;
+       y=str.y;
+ 
+
+        
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(fondo, x, y, 800, 500);
+        str.x += xspeed;
+        str.y = centerY / 2 + Math.sin(angle) * range;
+        angle += yspeed;
+        str.draw(context);
+        if (str.x > 700 || str.x < 0){
+               xspeed = xspeed * -1; 
+            }
+         str.x +=+xspeed;
+
+
+      }());
+    };
+    </script>
+  </body>
+</html>
