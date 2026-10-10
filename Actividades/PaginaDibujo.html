@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dibujo</title>
+    <style>
+      body {
+        background-color: aquamarine;
+        text-align: center;
+      }
+      canvas {
+        border: 5px solid rgb(10, 62, 73);
+        background-color: white;
+      }
+      .colores{
+        width: 100%;
+        height: 50px;
+        text-align: center;
+      }
+      .colores button{
+        width: 100px;
+        height: 40px;
+        margin-right: 5px;
+        margin-top: 5px;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+      #black{
+        background: black;
+      }
+      #red{
+        background: red;
+      }
+      #green{
+        background: green;
+      }
+      #yellow{
+        background: yellow;
+      }
+      #blue{
+        background: blue;
+      }
+      .colores button:hover{
+        opacity: 0.5;
+      }
+       #otros{
+        width: 100%;
+        height: 60px;
+      }
+      #otros button{
+        width: 300px;
+        height: 50px;
+        background: #303030;
+        color: white;
+        font: 25px impact;
+        cursor: pointer;
+      }
+      #otros button:hover{
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="colores">
+      <button id="black" type="button" value="#000000"></button>
+      <button id="red" type="button" value="#ff0000"></button>
+      <button id="green" type="button" value="#00FF73"></button>
+      <button id="yellow" type="button" value="#ffff00"></button>
+      <button id="blue" type="button" value="#0000ff"></button>
+      <!--AGREGAR MÁS COLORES AQUÍ -->
+
+
+
+    </div>
+    <div class="grosor">
+            <label for="sizeSlider">Size: <span id="sizeVal">5</span>px</label>
+            <input type="range" id="sizeSlider" min="1" max="50" value="5">
+        </div>
+    <div id="otros">
+      <button id="clearCanvas" type="button">Clear</button>
+    </div>
+    <canvas id="canvas" width="1200" height="700"></canvas>
+    <aside>Click and draw with the mouse.</aside>
+    
+    <script src="../utils.js"></script>
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas);
+     
+
+          
+
+
+      canvas.addEventListener('mousedown', function () {
+        context.beginPath();
+        context.moveTo(mouse.x, mouse.y);
+
+        canvas.addEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+              let currentSize = 5;
+      canvas.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+      function onMouseMove () {
+        context.lineTo(mouse.x, mouse.y);
+
+        context.stroke();
+
+
+      }
+     
+     
+      // Handle Colors
+      var colores = document.getElementsByClassName('colores')[0];
+
+      colores.addEventListener('click', function(event) {
+          context.strokeStyle = event.target.value;
+
+          });
+          
+      // Handle Clear Button
+      var clearButton = document.getElementById('clearCanvas');
+
+  
+
+      clearButton.addEventListener('click', function() {
+         context.clearRect(0, 0, canvas.width, canvas.height);
+        });
+       
+
+    };
+    </script>
+  </body>
+</html>
+```
